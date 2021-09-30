@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr-CA"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>INF3105 / Quiz 1</title>
+<meta name="author" content="Éric Beaudry">
+<style>
+table{
+    border-collapse: collapse;
+    border: 1px solid #000;
+    vertical-align: top;
+}
+td{
+    border: 1px solid #000;
+    padding: 2px;
+    vertical-align: top;
+    text-align: left;
+}
+th{
+    border: 1px solid #666;
+    padding: 2px;
+    text-align: left;
+    vertical-align: bottom;
+    background-color: lightgray;
+}
+</style>
+</head>
+<body>
+
+<h1>INF3105 / Quiz 1</h1>
+<h2>Automne 2020</h2>
+
+
+<table>
+<tbody><tr>
+<th>Groupe</th>
+<th>Question</th>
+<th>Réponse / Explication</th>
+</tr>
+
+<!--
+<tr>
+<td colspan="3">
+Questions sur C++ // Partie A
+</td>
+</tr>
+-->
+
+
+<tr>
+<td>20 et 40</td>
+<td>Cochez les mots clé C++</td>
+<td>
+Il y avaient plus blocs de choix de réponses pour chaque groupe.<br><br>
+Choix qui étaient des mots clé:<br>
+int, new, delete, class, return, char, double, friend, struct, float, public<br><br>
+Choix qui n'étaient pas des mots clé:<br>
+iostream, sqrt, function, cos, lambda, string<br><br>
+Note: Plusieurs de ces noms identifient des fonctions ou des classes de 
+la bibliothèque standard C++. Ces mots ne sont toutefois pas des mots 
+clé (mots réservés) du langage C++.
+C'est d'ailleurs possible de réutiliser ces noms, car leur portée est 
+limitée à l'espace de noms <tt>std</tt>.
+Exemple:
+<pre>#include ...
+// ne pas mettre using namespace std;
+int main(){
+  char[] string = "bonjour";
+  std::string cos = "allo";
+  double cout=0;
+  int endl = 32;
+  std::cout &lt;&lt; string &lt;&lt; cos &lt;&lt; std::cos(cout) &lt;&lt; endl &lt;&lt; std::endl;
+}
+</pre>
+</td>
+</tr>
+
+<tr>
+<td>20 et 40</td>
+<td>Cochez les caractéristiques du langage C++</td>
+<td>
+Il y avait plusieurs blocs de choix de réponses pour chaque groupe.<br><br>
+
+C++ est un langage <b>fortement typé</b>.
+On ne peut pas affecter une variable dans une autre si leurs types sont incompatibles,
+à moins de demander une conversion explicite (<i>cast</i>)<br>
+
+C++ n'est pas un <b>langage à typage dynamique</b>. C'est plutôt un langage à typage statique, c'est-à-dire que le type de toutes les variables doit être connu à la compilation.<br>
+
+C++ n'est pas <b>destiné à être interprété par une machine virtuelle</b>. Il est
+plutôt compilé directement en code machine natif de l'architecture de
+l'ordinateur cible.<br>
+
+C++ est un <b>langage orienté objet</b>.
+On peut créer des classes, faire de
+l'héritage, du polymorphisme, etc.<br>
+
+C++ est un langage de <b>programmation procédurale</b>.
+Il est possible de
+diviser notre code en plusieurs procédures/fonctions.<br>
+
+C++ est un langage de <b>programmation générique</b> grâce au mécanisme de
+<i>templates</i> qui permet d'écrire du code qui s'applique à des données de
+type différent.
+</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>La ligne <tt>#include "abcde.h"</tt> est _____</td>
+<td>
+Comme toutes les lignes qui commencent par un dièse (#), c'est une <b>directive de précompilation</b>.
+Celle-ci demande l'inclusion d'un autre fichier source (généralement une entête).
+</td>
+</tr>
+
+<tr>
+<td>40</td>
+<td>Qu'est-ce que le code suivant affiche : <pre>int i;<br>cout &lt;&lt; i &lt;&lt; endl;</pre></td>
+<td>
+Le code compile et ne fait pas d'erreur à l'exécution. Par contre, puisque la
+variable n'est pas initialisée, la valeur affichée sera une <b>valeur inconnue</b>,
+soit l'actuelle valeur en mémoire.
+Utiliser des variables non initialisées peut mener à des comportements 
+non déterministes (pseudo aléatoire) du programme, le rendant difficile à
+ investiguer.
+</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>Cochez les énoncés où <tt>a</tt> sera initialisé.</td>
+<td>
+  <code>int a = 0;</code><br>
+  <code>int a {3};</code><br>
+  <code>std::string a;</code><br>
+  seront initialisés, tandis que<br>
+  <code>int a;</code><br>
+  <code>int* a;</code><br>
+  ne le seront pas.
+<br><br>
+La chaîne <tt>std::string a</tt> est initialisée, car elle n'est pas un type primitif.
+Son constructeur par défaut est donc automatiquement appelé.
+</td>
+</tr>
+
+<tr>
+<td>40</td>
+<td>Quelle est la valeur que le code suivant affiche : <pre>int x=0;<br>int z=x++;<br>int y=++z;<br>cout &lt;&lt; ++x+y+z++;</pre></td>
+<td>
+  <code>int x=0;</code> (x vaut 0)<br>
+  <code>int z = x++;</code> (x vaut 1, z vaut 0)<br>
+  <code>int y = ++z;</code> (x vaut 1, y vaut 1, z vaut 1)<br>
+  <code>cout &lt;&lt; ++x+y+z++;</code> (x est augmenté de 1 avant l'affichage. z est augmenté de 1 après l'affichage)<br>
+  Le code affiche donc 2+1+1 = 4.
+</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>Quelle est la valeur de <tt>x</tt> affichée : <pre>int x=1;<br>int y=++x;<br>x=++y;<br>std::cout &lt;&lt; x;</pre></td>
+<td>
+  <code>int x=1;</code> (x vaut 1)<br>
+  <code>int y = ++x;</code> (x vaut 2, y vaut 2)<br>
+  <code>x = ++y;</code> (x vaut 3, y vaut 3)<br>
+  Le code affiche donc 3.
+</td>
+</tr>
+
+<tr>
+<td>40</td>
+<td>Qu'affiche le code suivant : <pre>for(int i = 0; i &lt; 3; i++)<br>  cout &lt;&lt; i;<br>for(int i = 0; i &lt; 3; ++i)<br>  cout &lt;&lt; i;</pre></td>
+<td>
+Puisqu'il n'y a pas d'assignation de la variable i à une autre variable 
+lorsqu'elle est incrémentée, i++ et ++i fera strictement la même chose. 
+Les deux boucles affichent donc 012 et l'affichage final est donc 
+012012.
+</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>Cochez le ou les énoncé(s) valide(s) qui alloue(nt) un tableau par allocation <u>automatique</u> (une variante de la question demande plutôt <u>dynamique</u>)</td>
+<td>
+  <code>int a</code> déclare un int (donc pas un tableau)<br>
+  <code>int a1, a2</code> déclare deux int (donc pas un tableau)<br>
+  <code>int*a</code> déclare un pointeur vers un int (donc pas un tableau)<br>
+  <code>int a[1:10]</code> est une instruction syntaxiquement invalide<br>
+  <code>int a[1]</code> alloue un tableau (d'une seule case) <b>par allocation automatique</b><br>
+  <code>int* a = new int[3]</code> alloue un tableau (de 3 cases) <b>par allocation dynamique</b><br>
+</td>
+</tr>
+
+<tr>
+<td>40</td>
+<td>Combien de fois le constructeur de la classe <tt>Entier</tt> est-t-il appelé dans le programme ci-bas ? <pre>class Entier{/*...*/};<br>class Point{<br>  Entier x, y, z;<br>};<br>struct Quadrilatere{<br>  Point p[4];<br>};<br>int main(){<br>  Point a, b, c, d, e;<br>  Quadrilatere* tp = new Quadrilatere[3];<br>  return 0;<br>}</pre></td>
+<td>
+Il y a en tout 5 Point (a, b, c, d, e) et 3 Quadrilatère (de chacun 4 Point),
+donc au total 17 Point. Chaque Point contient trois Entier, il y a donc au total
+eu 17*3 = 51 Entier, et donc 51 appels au constructeur d'Entier.
+</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>Combien de fois le constructeur de la classe <tt>Entier</tt> est-t-il appelé dans le programme ci-bas ? <pre>class Entier{/*...*/};<br>class Point{<br>  Entier x, y;<br>};<br>struct Pentagone{<br>  Point p[5];<br>};<br>int main(){<br>  Point a, b, c, d, e;<br>  Pentagone* tp = new Pentagone[2];<br>  return 0;<br>}</pre></td>
+<td>
+Il y a en tout 5 Point (a, b, c, d, e) et 2 Pentagone (de chacun 5 Point),
+donc au total 15 Point. Chaque Point contient deux Entier, il y a donc au total
+eu 15*2 = 30 Entier, et donc 30 appels au constructeur d'Entier.
+</td>
+</tr>
+
+<tr>
+<td>40</td>
+<td>Lesquels des éléments suivants sont des facteurs <i>secondaires</i> influençant le temps d'exécution d'un programme ?</td>
+<td>
+  Le système d'exploitation utilisé, la qualité de l'implémentation de 
+l'algorithme testé, le langage de programmation utilisé et la qualité du
+ matériel sont tous des <b>facteurs secondaires</b>.<br><br>
+  La taille du problème (ex.: n) est plutôt le <b>facteur primaire</b>.
+</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>Dans quel ordre les <u>corps des destructeurs</u> sont appelés dans le programme suivant ? <pre>class A{<br> ...<br>};<br>class B : public A{ // B hérite de A<br> ...<br>};<br>class C{<br> ...<br>  B b;<br>};<br>int main(){<br>  C c;<br>  return 0;<br>}</pre>
+</td>
+<td>
+L'ordre de construction en C++ est:
+<ol>
+  <li>appel du constructeur de la classe parent (si la classe hérite d'une autre classe)</li>
+  <li>appel du constructeur de chaque attribut de la classe</li>
+  <li>exécution du corps du constructeur</li>
+</ol>
+
+L'ordre de destruction est l'inverse de l'ordre de construction:
+<ol>
+  <li>exécution du corps du destructeur</li>
+  <li>appel du destructeur de chaque attribut de la classe</li>
+  <li>appel du destructeur de la classe parent (si la classe hérite d'une autre classe)</li>
+</ol>
+
+Ainsi, dans notre exemple, lorsque l'objet <code>c</code> est détruit, le corps
+du destructeur de C est appelé, suivi du destructeur de B.<br>
+
+La destruction de <code>b</code> commence par exécuter le corps du destructeur
+de B, puis finalement appel le destructeur de la classe parent A.<br>
+
+L'ordre d'exécution du corps des destructeurs est donc C, B, A.
+</td>
+</tr>
+
+<tr>
+<td>40</td>
+<td>Quelle est la complexité temporelle de ___ dans un tableau ?</td>
+<td>
+<b>L'enlèvement d'un élément spécifique dans un tableau</b> est O(n) car (1) il faut
+itérer sur le tableau pour trouver sa position si on ne la connait pas déjà, et
+(2) en enlevant l'élément, il faut décaler d'une case vers la gauche tous ceux
+qui étaient à la droite de l'élément enlevé.<br><br>
+
+<b>La destruction</b> d'un <code>tableau<int></int></code> est O(1) car l'instruction
+<code>delete</code> prend un temps constant, peu importe la quantité de mémoire
+libérée. Note: Si le tableau avait contenu des objets plutôt que des int, la
+complexité aurait été O(n) car le destructeur de chaque objet dans le tableau
+aurait dû être appelé.<br><br>
+
+La complexité d'<b>une fonction qui double la valeur de chaque élément dans un
+tableau</b> est O(n), car il faut itérer une fois sur chaque élément.
+</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>Quelle est la complexité temporelle de ___ dans un tableau ?</td>
+<td>
+<b>L'ajout dans un tableau</b> a une complexité amortie de O(1) (voir explications dans les vidéos du cours)<br><br>
+
+<b>L'insertion à une position i dans un tableau</b> a une complexité de O(n),
+car tous les éléments déjà présents à une position supérieure à i doivent être
+décalés d'une case. Dans le pire cas, il faut donc faire n décalages.<br><br>
+
+<b>Inverser l'ordre des éléments dans un tableau</b> a une complexité de O(n),
+car il faut faire n/2 échanges de valeurs dans le tableau, ce qui est dans l'ordre
+de grandeur O(n).
+</td>
+</tr>
+
+<tr>
+<td>20 et 40</td>
+<td>Quelle est la complexité temporelle d'une fonction <tt>int compteCommuns(const Tableau&lt;T&gt;&amp; x, const Tableau&lt;T&gt;&amp; y)</tt> qui retourne le nombre d'objets T qui sont à la fois dans <tt>x</tt> et <tt>y</tt>. La variable <i>n</i> représente la taille maximale des deux tableaux. Considérez le pire cas d'entrée et la meilleure implémentation possible.</td>
+<td>
+Une solution est de trier chacun des tableaux en temps O(n log n), puis d'itérer
+alternativement sur chacun des tableaux pour compter les éléments en communs en
+temps O(n). Le temps total est donc l'opération ayant pris le plus de temps, le
+tri, et donc O(n log n).<br><br>
+
+Note: Une variante de la question demandait la même chose, mais pour 3 tableaux
+plutôt que 2. Par le même raisonnement, la complexité reste O(n log n).
+</td>
+</tr>
+
+<tr>
+<td>20 et 40</td>
+<td>Quelle est la complexité temporelle d'une fonction <tt>int compteUniques(const Tableau&lt;T&gt;&amp; x, const Tableau&lt;T&gt;&amp; y)</tt> qui retourne le nombre d'objets T qui apparaissent dans une seule des deux tableaux <tt>x</tt> et <tt>y</tt>. La variable <i>n</i> représente la taille maximale des deux tableaux. Considérez le pire cas d'entrée et la meilleure implémentation possible.</td>
+<td>
+Avec une solution presque identique à celle de la question précédente, on peut
+résoudre le problème en O(n log n).
+</td>
+</tr>
+
+<tr>
+<td>20 et 40</td>
+<td>Cochez les complexités ne pouvant pas être simplifiées</td>
+<td>
+Les choix de réponses étaient différents pour chaque étudiant.<br><br>
+
+O(1), O(n), O(n+m), O(n*m), O(n² + m), O(n + m) et O(n³ + m) ne peuvent pas être
+simplifié.<br><br>
+
+O(2) se simplifie à O(1)<br>
+O(n+1) se simplifie à O(n)<br>
+O(7n) se simplifie à O(n)<br>
+O(n² + 2m) se simplifie à O(n² + m)<br>
+O(2n² + m) se simplifie à O(n² + m)<br>
+O(log(n²)) se simplifie à O(log(n)) (car log(n²) = 2 log(n))<br>
+O(n² + n) se simplifie à O(n²)
+</td>
+</tr>
+
+<tr>
+<td>40</td>
+<td>Cochez les énoncés vrais par rapport à la complexité</td>
+<td>
+Il est vrai que <b>l'analyse asymptotique a pour résultat un ordre de grandeur</b> et que <b><tt>O(f(n))</tt> est l'ensemble des fonctions qui croissent à une vitesse similaire</b>.
+
+Par contre, les énoncés entre guillemets suivants sont faux:
+<ul>
+<li>"la complexité empirique est plus précise que la complexité 
+asymptotique pour estimer le temps lorsque n est très grand". L'analyse 
+empirique est sensible aux facteurs secondaires, à la possible rareté du
+ pire cas et au très grand nombre (parfois infini) d'entrées possibles. 
+Ce n'est donc pas plus précis.</li>
+<li>"l'analyse amortie consiste à trouver la complexité d'un programme lorsqu'il est lancé avec la valeur la plus probable".</li>
+<li>"la complexité asymptotique nécessite de considérer les facteurs 
+secondaires". C'est plutôt l'analyse empirique qui considère les 
+facteurs secondaires.</li>
+</ul>
+</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>L'analyse empirique a comme caractéristiques:</td>
+<td>
+Il est vrai que l'analyse empirique est <b>une méthode généralement simple</b>
+et que cela <b>nécessite un ensemble d'entrées («tests») de taille variable</b>.<br><br>
+
+Par contre, cette méthode n'est <b>pas capable de détecter facilement le pire
+cas</b> et <b>ne nécessite pas un langage de programmation de haut niveau.</b>
+</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>
+Codez une fonction <tt>template &lt;class T&gt;void garderUniques(Tableau&lt;T&gt;&amp; t)</tt> qui retire les doublons dans un tableau <tt>t</tt>. Notez que l'ordre relatif des objets conservés doit être préservé. Ex.: «5 7 6 6 7 9 3 6» devient «5 7 6 9 3».
+</td>
+<td>
+Une solution simple consiste à imbriquer deux boucles <tt>for</tt>.
+La première parcourt le tableau reçu.
+La deuxième, la boucle interne, vérifie si l'élément a déjà été ajouté au résultat.
+<pre>void garderUniques(Tableau&lt;T&gt;&amp; t){
+    Tableau&lt;T&gt; c=t; // garder une copie
+    t.vider(); // t sert maintenant de résultat
+    for(int i=0;i&lt;c.taille();i++){
+    	bool deja = false;
+    	for(int j=0;j&lt;t.taille();j++)
+    	    if(c[i]==t[j])
+    	    	deja=true;
+    	if(!deja)
+    	    t.ajouter(c[i]);
+    }
+}
+</pre>
+La solution ci-dessus est en temps O(n²).
+Elle n'est pas optimale, car il existe une meilleure solution en temps O(n log n).
+Pour arriver une telle solution, on peut :
+copier le tableau, trier la copie et créer un tableau de
+booléens b de même taille (qu'on initialise avec des 'false').
+Ensuite, on crée un
+nouveau tableau r qui contiendra la solution. On itère sur le tableau initial:
+pour chaque itération, on fait une recherche dichotomique (O(log n)) de
+l'élément t[i] dans le tableau trié. Si l'élément n'a pas déjà été ajouté dans r
+(b[i] est faux), on l'ajoute et on met le booléen à vrai.<br><br>
+<pre>void garderUniques(Tableau&lt;T&gt;&amp; t){
+    Tableau&lt;T&gt; copie=t, ttrie = t;
+    trier(ttrie);
+    bool* dejapris = new bool[t.taille];
+    for(int=i;i&lt;t.taille();i++)
+       dejapris[i] = false;
+    t.vider(); // t devient maintenant le résultat
+    for(int i=0;i&lt;copie.taille();i++){
+       int index = rechecheDichotomique(ttrie, copie[i], 0, t.taille());
+       if(!dejapris[index]){
+           r.ajouter(copie[i]);
+           dejapris[index]=true;
+       }
+    }
+    delete[] dejapris;
+}
+</pre>
+</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>
+Codez une fonction <tt>template &lt;class T&gt; Tableau&lt;T&gt; placerUniquesDebut(const Tableau&lt;T&gt;&amp; t)</tt>
+ qui retourne une copie d'un tableau dans laquelle les doublons sont 
+déplacés après la première occurrence de tous les objets. L'ordre 
+relatif des objets doit être préservé. Ex.: «5 7 6 6 7 9 3 6» retourne 
+«5 7 6 9 3 6 7 6».
+</td>
+<td>
+On peut utiliser les mêmes solutions qu'à la question précédente, mais en créant
+un tableau supplémentaire qui stocke les éléments qui sont en double pour
+pouvoir les ajouter à la fin.
+
+<pre>// Version Simple O(n²)
+void garderUniques(Tableau&lt;T&gt;&amp; t){
+    Tableau&lt;T&gt; c=t; // garder une copie
+    Tableau&lt;T&gt; f; // pour garder les doublons et les placer à la fin
+    t.vider(); // t sert maintenant de résultat
+    for(int i=0;i&lt;c.taille();i++){
+    	bool deja = false;
+    	for(int j=0;j&lt;t.taille();j++)
+    	    if(c[i]==t[j])
+    	    	deja=true;
+    	if(deja)
+    	    f.ajouter(c[i]);
+    	else
+    	    t.ajouter(c[i]);
+    }
+    for(int i=0;i&lt;f.taille();i++)
+    	t.ajouter(f[i]);
+}
+</pre>
+</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>
+Codez une fonction <tt>template &lt;class T&gt; Tableau&lt;T&gt; regrouperIdentiques(const Tableau&lt;T&gt;&amp; t)</tt>
+ qui regroupe les objets identiques. L'ordre de la première occurrence 
+des objets doit être préservé. Ex.: «5 7 6 6 7 9 3 6» retourne «5 7 7 6 6
+ 6 9 3».
+</td>
+<td>
+On peut faire comme pour garderUniques, mais plutôt que d'avoir un tableau de
+booléens, il suffit d'ajouter les doublons à la suite les uns des
+autres.
+</td>
+</tr>
+
+<tr>
+<td>40</td>
+<td>
+Codez une fonction <tt>template &lt;class T&gt;void separerPairImpair(Tableau&lt;T&gt;&amp; t)</tt>
+ qui met tous les nombres pairs au début du tableau, et tous les nombres
+ impairs à la fin. Les nombres pairs et impairs doivent garder leur 
+ordre relatif entres eux. Ex.: «1 4 2 5 6 8 3 7» -&gt; «4 2 6 8 1 5 3 
+7».
+</td>
+<td>
+Une façon est de créer deux tableaux temporaires. Ensuite, on itère sur le
+tableau t et on ajoute tous les éléments pairs rencontrés dans un des tableaux,
+et tous les éléments impairs dans l'autre. Finalement, on vide t et on ajoute
+un-à-un tous les nombres pairs et tous les nombres impairs.
+</td>
+</tr>
+
+<tr>
+<td>40</td>
+<td>
+Codez une fonction <tt>template &lt;class T&gt; void triAlterne(const Tableau&lt;T&gt;&amp; t)</tt>
+ qui tri le tableau de façon alternée (le deuxième élément est plus 
+grand que le premier, le troisième est plus petit que le deuxième, etc. 
+Autrement dit, on veut tab[0] &lt; tab[1] &gt; tab[2] &lt; tab[3] &gt; 
+tab[4] ...). Ex.: «4 2 1 4 6 8» devient «2 4 1 6 4 8». Note: Le résultat
+ n'est pas unique. Indice: trier le tableau et faire des échanges entre 
+deux valeurs pourrait être utile.
+</td>
+<td>
+Une solution est de d'abord trier le tableau, puis d'itérer sur le tableau
+(boucle for). Il suffit d'échanger les éléments deux-à-deux (en excluant
+l'élément de départ). Ainsi, on fait des échanges de la forme
+<code>échange(tab[i], tab[i+1])</code>, ce qui garantit que la croissance des
+éléments sera alterné.
+
+Note: Il existe aussi une solution en O(n) qui ne nécessite pas de tri.
+</td>
+</tr>
+<tr>
+<td>20</td>
+<td>
+Quelle est la complexité des fonctions f1 et f2:
+<pre>bool f1(int* tab, int n){
+     for(int i=0;i&lt;n;i++)
+         if(tab[i]%2 == 0)
+             for(int j=i+1;j&lt;n;j++)
+                 if(tab[j]==tab[i])
+                     return true;
+     return false;
+}
+
+bool f2(int* tab, int n){
+     for(int i=0;i&lt;n;i++)
+         for(int j=0;j&lt;n;j++)
+             for(int k=0;k&lt;n;k++)
+                 if(i!=j &amp;&amp; i!=k &amp;&amp; j!=k
+                    &amp;&amp; tab[i]*tab[j]==tab[k])
+                     return true;
+     return false;
+}
+
+int main(int argc, const char** argv){
+    int n;
+    std::cin &gt;&gt; n;
+    int* tab = new int[n];
+    for(int i=0;i&lt;n;i++)
+        std::cin &gt;&gt; tab[i];
+    if(f1(tab, n))
+        std::cout &lt;&lt; "F1" &lt;&lt; std::endl;
+    if(f2(tab, n))
+        std::cout &lt;&lt; "F2" &lt;&lt; std::endl;
+    return 0;
+}
+</pre>
+</td>
+<td>
+Pour <code>f1</code>, il est possible dans le pire cas que le premier if soit
+toujours vrai (donc, qu'on exécute la deuxième boucle for à chaque itération de
+la première boucle for) et que le deuxième if soit toujours faux (donc, que la
+fonction ne termine pas hâtivement). Le nombre total d'itérations dans ce cas
+sera n(n-1)/2, ce qui est dans l'ordre de O(n²).<br><br>
+
+Pour <code>f2</code>, il est possible que le if ne soit jamais vrai, et donc que
+les trois boucles s'exécutent au complet. Chacune des trois boucles fait n
+itérations. Le temps d'exécution total est donc dans l'ordre de O(n³).
+</td>
+</tr>
+
+<tr>
+<td>40</td>
+<td>
+Quelle est la complexité des fonctions f et main:
+<pre>bool f(int* tab, int n) {
+    if(n &gt; 1)
+        return tab[n-1] + f(tab, n/2);
+    return tab[0];
+}
+
+int main(int argc, const char* argv[]){
+    int n;
+    std::cin &gt;&gt; n;
+    int* tab = new int[n];
+    for(int i=0;i&lt;n;i++)
+        std::cin &gt;&gt; tab[i];
+    if(f(tab, n) &gt; 10)
+        std::cout &lt;&lt; "f" &lt;&lt; std::endl;
+    return 0;
+}
+</pre>
+</td>
+<td>
+La fonction <i>f</i> est récursive et divise par 2 la taille considérée à chaque appel
+récursif. La complexité de <i>f</i> est donc O(log n).<br><br>
+
+La fonction <code>main</code> lit n nombres sur l'entrée standard, ce qui prend un temps
+O(n), puis appelle la fonction <i>f</i>. La complexité totale est donc O(n).
+</td>
+</tr>
+
+</tbody></table>
+<br>
+
+
+
+</body></html>
